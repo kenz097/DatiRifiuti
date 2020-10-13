@@ -1,4 +1,4 @@
-# DatiMalattie
+# DatiSpazzatura
 Progetto per la statistica e analisi dei dati in linguaggio R
 
 Link utili
