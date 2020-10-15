@@ -8,18 +8,18 @@ createPareto <- function (name, arrayToAnalyze) {
   arrayToAnalyze <- arrayToAnalyze / mySum
   
   # Ordering 
-  ari_ordered <- order(arrayToAnalyze, decreasing = TRUE)
+  ariOrdered <- order(arrayToAnalyze, decreasing = TRUE)
   
   # Creating graphic
-  bp <- barplot(arrayToAnalyze[ari_ordered], main = name,
+  bp <- barplot(arrayToAnalyze[ariOrdered], main = name,
                 col=rainbow(length(arrayToAnalyze)), 
-                names = mydf$Regioni[ari_ordered], las=2, ylim = c(0, 1.05))
+                names = mydf$Regioni[ariOrdered], las=2, ylim = c(0, 1.05))
   
-  lines(bp, cumsum(arrayToAnalyze[ari_ordered]), 
+  lines(bp, cumsum(arrayToAnalyze[ariOrdered]), 
         type = "b", pch = 16)
   
-  text(bp - 0.2, cumsum(arrayToAnalyze[ari_ordered]) + 0.03,
-       paste(format(cumsum(arrayToAnalyze[ari_ordered]) * 100,
+  text(bp - 0.2, cumsum(arrayToAnalyze[ariOrdered]) + 0.03,
+       paste(format(cumsum(arrayToAnalyze[ariOrdered]) * 100,
                     digits = 2), "%"))
 }
 
@@ -61,11 +61,11 @@ createBarPlot_ordered <- function (name, arrayToAnalyze, maxLimit, frequency) {
     mySum = sum(arrayToAnalyze)
     arrayToAnalyze <- arrayToAnalyze / mySum
   }
-  data_order <- order(arrayToAnalyze, decreasing = TRUE)
-  barplot(arrayToAnalyze[data_order],
+  dataOrder <- order(arrayToAnalyze, decreasing = TRUE)
+  barplot(arrayToAnalyze[dataOrder],
           col=rainbow(length(arrayToAnalyze)),
           ylim = c(0, maxLimit), main = name,
-          names = mydf$Regioni[data_order], las=2)
+          names = mydf$Regioni[dataOrder], las=2)
 }
 
 # createBoxPlot_base : displays a BoxPlot with default settings
@@ -82,13 +82,14 @@ createBoxPlot_base <- function(name, arrayToAnalyze) {
 createBoxPlot_colored <- function(name, arrayToAnalyze, customColor) {
   boxplot(arrayToAnalyze, col=customColor, main = name)
 }
+
 #This function will create Pie diagram based on the array parameter and name
 #of graphic
-createPie<-function(arrayToAnalyze,nameGf){
+createPie<-function(arrayToAnalyze,name){
   # Ordering
   ariOrdered<-order(arrayToAnalyze,decreasing = TRUE)
   #Creating graphic with pie
-  p<-pie(arrayToAnalyze[ariOrdered],main=nameGf,
+  p<-pie(arrayToAnalyze[ariOrdered],main=name,
          col=rainbow(length(arrayToAnalyze)),
          labels=mydf$Regioni[ariOrdered],radius =1)
   
