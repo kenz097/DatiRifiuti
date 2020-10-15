@@ -82,3 +82,14 @@ createBoxPlot_base <- function(name, arrayToAnalyze) {
 createBoxPlot_colored <- function(name, arrayToAnalyze, customColor) {
   boxplot(arrayToAnalyze, col=customColor, main = name)
 }
+#This function will create Pie diagram based on the array parameter and name
+#of graphic
+createPie<-function(arrayToAnalyze,nameGf){
+  # Ordering
+  ariOrdered<-order(arrayToAnalyze,decreasing = TRUE)
+  #Creating graphic with pie
+  p<-pie(arrayToAnalyze[ariOrdered],main=nameGf,
+         col=rainbow(length(arrayToAnalyze)),
+         labels=mydf$Regioni[ariOrdered],radius =1)
+  
+}
