@@ -1,9 +1,9 @@
-# createPareto : displays a Pareto diagram with frequences
+# createPareto : displays a Pareto diagram with frequencies
 ##  input -> name : gives a name to the Pareto diagram
 ##           arrayToAnalyze : array with indexes to display
 createPareto <- function (name, arrayToAnalyze) {
   
-  # Calculating frequences
+  # Calculating frequencies
   mySum = sum(arrayToAnalyze)
   arrayToAnalyze <- arrayToAnalyze / mySum
   

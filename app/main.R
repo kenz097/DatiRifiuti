@@ -1,5 +1,4 @@
 mydf <- Dati
-mydf
 for (i in 1:20){
   for (j in 2:7) {
     mydf[i, j] <- as.integer(mydf[i, j])
@@ -7,17 +6,24 @@ for (i in 1:20){
 }
 remove(i, j)
 
-
-main <- function() {
+  ### MAIN ###
   
   # Getting the row arrays
-  arrayRaccoltaIndifferenziata = mydf$`Raccolta indifferenziata`
-  arrayCarta = mydf$`Carta e cartone`
-  arrayPlastica = mydf$Plastica
-  arrayVetro = mydf$Vetro
-  arrayUmido = mydf$`Rifiuti organici`
-  arrayAltro = mydf$Altro
+  datiRaccoltaIndifferenziata = mydf$`Raccolta indifferenziata`
+  datiCarta = mydf$`Carta e cartone`
+  datiPlastica = mydf$Plastica
+  datiVetro = mydf$Vetro
+  datiUmido = mydf$`Rifiuti organici`
+  datiAltro = mydf$Altro
   
-}
-
-main()
+  # ATTENTION
+    # Before continuing, re-group all graphs in only one environment
+  
+  createBarPlot_limit("Carta e Cartone", datiCarta, 1000000)
+  createBarPlot_limit("Plastica", datiPlastica, 1000000)
+  createBarPlot_limit("Vetro", datiVetro, 1000000)
+  createBarPlot_limit("Carta e Cartone", datiCarta, 1000000)
+  createBarPlot_limit("Carta e Cartone", datiCarta, 1000000)
+  
+  # OR
+    # Jump chapter 2 and start another chapter by ignoring previous code
