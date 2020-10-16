@@ -1,5 +1,5 @@
 # createPareto : displays a Pareto diagram with frequences
-##  input -> name : gives a name to the pareto
+##  input -> name : gives a name to the Pareto diagram
 ##           arrayToAnalyze : array with indexes to display
 createPareto <- function (name, arrayToAnalyze) {
   
@@ -24,7 +24,7 @@ createPareto <- function (name, arrayToAnalyze) {
 }
 
 # createBarPlot_base : displays a BarPlot diagram
-##  input -> name : gives a name to the pareto
+##  input -> name : gives a name to the BarPlot diagram
 ##           arrayToAnalyze : array with indexes to display
 ##           frequency : 0 -> use indexes | 1 -> use frequences
 createBarPlot_base <- function (name, arrayToAnalyze, frequency) {
@@ -37,7 +37,7 @@ createBarPlot_base <- function (name, arrayToAnalyze, frequency) {
 }
 
 # createBarPlot_limit : displays a BarPlot diagram with a max limit on y axis
-##  input -> name : gives a name to the pareto
+##  input -> name : gives a name to the BarPlot diagram
 ##           arrayToAnalyze : array with indexes to display
 ##           maxLimit : the y limit on the axis
 ##           frequency : 0 -> use indexes | 1 -> use frequences
@@ -52,7 +52,7 @@ createBarPlot_limit <- function (name, arrayToAnalyze, maxLimit, frequency) {
 
 # createBarPlot_ordered : displays a BarPlot diagram with a max limit on y axis
 #                         and with ordered indexes
-##  input -> name : gives a name to the pareto
+##  input -> name : gives a name to the BarPlot diagram
 ##           arrayToAnalyze : array with indexes to display
 ##           maxLimit : the y limit on the axis
 ##           frequency : 0 -> use indexes | 1 -> use frequences
@@ -69,23 +69,24 @@ createBarPlot_ordered <- function (name, arrayToAnalyze, maxLimit, frequency) {
 }
 
 # createBoxPlot_base : displays a BoxPlot with default settings
-##  input -> name : gives a name to the pareto
+##  input -> name : gives a name to the BoxPlot diagram
 ##           arrayToAnalyze : array with indexes to display
 createBoxPlot_base <- function(name, arrayToAnalyze) {
   boxplot(arrayToAnalyze, col="green", main = name)
 }
 
 # createBoxPlot_colored : displays a BoxPlot with custom color
-##  input -> name : gives a name to the pareto
+##  input -> name : gives a name to the BoxPlot diagram
 ##           arrayToAnalyze : array with indexes to display
 ##           customColor : color of the BoxPlot
 createBoxPlot_colored <- function(name, arrayToAnalyze, customColor) {
   boxplot(arrayToAnalyze, col=customColor, main = name)
 }
 
-#This function will create Pie diagram based on the array parameter and name
-#of graphic
-createPie<-function(arrayToAnalyze,name){
+# createBoxPlot_base : displays a Pie diagram
+##  input -> name : gives a name to the Pie diagram
+##           arrayToAnalyze : array with indexes to display
+createPie<-function(name, arrayToAnalyze){
   # Ordering
   ariOrdered<-order(arrayToAnalyze,decreasing = TRUE)
   #Creating graphic with pie
