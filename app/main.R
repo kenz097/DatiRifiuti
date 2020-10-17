@@ -12,6 +12,7 @@ remove(i, j)
   ### MAIN ###
   
   # Getting the row arrays
+
   labelsRifiuti <- c("Raccolta Indifferenziata","Rifiuti organici",
                      "Carta e cartone","Vetro","Plastica","Altro")
   datiRaccoltaIndifferenziata = mydf$`Raccolta indifferenziata`
@@ -32,13 +33,20 @@ remove(i, j)
   createBarPlot_limit("Rifiuti Indifferenziata", 
                       datiRaccoltaIndifferenziata, 1.05, 1)
   
+  #Display Pie with garbage for region
+  
+  createPie("Rifiuti Indifferenziata",datiRaccoltaIndifferenziata)
+  createPie("Rifiuti Organici",datiUmido)
+  createPie("Carta e cartone",datiCarta)
+  createPie("Vetro",datiVetro)
+  createPie("Plastica",datiPlastica)
+  createPie("Altro",datiAltro)
+  
   # OR
     # Jump chapter 2 and start another chapter by ignoring previous code
   
+  df
   #barplot
-  barplot(t(df), main="Frequenza assoluta congiunta",
-          legend=labelsRifiuti,
-          col=rainbow(6))
-  
+  createBarPlot_congiunta(df)
   
   

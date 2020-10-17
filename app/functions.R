@@ -95,3 +95,30 @@ createPie<-function(name, arrayToAnalyze){
          labels=mydf$Regioni[ariOrdered],radius =1)
   
 }
+
+# createBarPlot_congiunta : displays a BarPlot with Joint absolute frequency
+##  input -> arrayToAnalyze : array with multiple indexes to display
+createBarPlot_congiunta<-function(arrayToAnalyze){
+  arrayT<-t(arrayToAnalyze)
+  #rownames(array)<-c(namesRegion())
+  barplot(arrayT, main="Frequenza assoluta congiunta",
+          legend=namesGarbage,col=rainbow(6))
+}
+
+# namesGarbage : return the names of garbage
+namesGarbage<-function(){
+  namesRifiuti <- c("Raccolta Indifferenziata","Rifiuti organici",
+                     "Carta e cartone","Vetro","Plastica","Altro")
+  return (namesRifiuti)
+}
+
+#namesRegion
+namesRegion<-function(){
+  namesRegioni <- c("Piemonte","Valle d'Aosta /Vallée d'Aoste","Liguria",
+                    "Lombardia","Trentino-Alto Adige/Südtirol","Veneto",
+                    "Friuli-Venezia Giulia","Emilia-Romagna","Toscana",
+                    "Umbria","Marche","Lazio","Abruzzo","Molise","Campania",
+                    "Puglia","Basilicata","Calabria","Sicilia","Sardegna")
+  return (namesRegioni)
+  
+}
