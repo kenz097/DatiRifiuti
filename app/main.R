@@ -15,6 +15,11 @@ remove(i, j)
 
   labelsRifiuti <- c("Raccolta Indifferenziata","Rifiuti organici",
                      "Carta e cartone","Vetro","Plastica","Altro")
+  namesRegioni <- c("Piemonte","Valle d'Aosta /Vallée d'Aoste","Liguria",
+                    "Lombardia","Trentino-Alto Adige/Südtirol","Veneto",
+                    "Friuli-Venezia Giulia","Emilia-Romagna","Toscana",
+                    "Umbria","Marche","Lazio","Abruzzo","Molise","Campania",
+                    "Puglia","Basilicata","Calabria","Sicilia","Sardegna")
   datiRaccoltaIndifferenziata = mydf$`Raccolta indifferenziata`
   datiCarta = mydf$`Carta e cartone`
   datiPlastica = mydf$Plastica
@@ -45,8 +50,7 @@ remove(i, j)
   # OR
     # Jump chapter 2 and start another chapter by ignoring previous code
   
-  df
   #barplot
-  createBarPlot_congiunta(df)
+  createBarPlot_multiply(df)
   
   

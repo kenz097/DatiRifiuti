@@ -96,23 +96,26 @@ createPie<-function(name, arrayToAnalyze){
   
 }
 
-# createBarPlot_congiunta : displays a BarPlot with Joint absolute frequency
+# createBarPlot_multiply : displays a BarPlot with multiple value
 ##  input -> arrayToAnalyze : array with multiple indexes to display
-createBarPlot_congiunta<-function(arrayToAnalyze){
+createBarPlot_multiply<-function(arrayToAnalyze){
+  #Traslate table
   arrayT<-t(arrayToAnalyze)
-  #rownames(array)<-c(namesRegion())
+  colnames(arrayT)<-namesRegion()
+  
+  #Creating BarPlot
   barplot(arrayT, main="Frequenza assoluta congiunta",
-          legend=namesGarbage,col=rainbow(6))
+          legend=namesGarbage(),col=rainbow(6),las=2)
 }
 
-# namesGarbage : return the names of garbage
+# namesGarbage : return names of garbage
 namesGarbage<-function(){
   namesRifiuti <- c("Raccolta Indifferenziata","Rifiuti organici",
                      "Carta e cartone","Vetro","Plastica","Altro")
   return (namesRifiuti)
 }
 
-#namesRegion
+#namesRegion : rerurn names of Region
 namesRegion<-function(){
   namesRegioni <- c("Piemonte","Valle d'Aosta /Vallée d'Aoste","Liguria",
                     "Lombardia","Trentino-Alto Adige/Südtirol","Veneto",
