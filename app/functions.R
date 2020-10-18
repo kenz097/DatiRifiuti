@@ -96,15 +96,15 @@ createPie<-function(name, arrayToAnalyze){
   
 }
 
-# createBarPlot_multiply : displays a BarPlot with multiple value
+# createBarPlot_multiple : displays a BarPlot with multiple value
 ##  input -> arrayToAnalyze : array with multiple indexes to display
-createBarPlot_multiply<-function(arrayToAnalyze){
+createBarPlot_multiple<-function(arrayToAnalyze){
   #Traslate table
   arrayT<-t(arrayToAnalyze)
   colnames(arrayT)<-namesRegion()
   
   #Creating BarPlot
-  barplot(arrayT, main="Frequenza assoluta congiunta",
+  barplot(arrayT, main="Grafico a barre multiple",
           legend=namesGarbage(),col=rainbow(6),las=2)
 }
 
@@ -117,8 +117,8 @@ namesGarbage<-function(){
 
 #namesRegion : rerurn names of Region
 namesRegion<-function(){
-  namesRegioni <- c("Piemonte","Valle d'Aosta /Vallée d'Aoste","Liguria",
-                    "Lombardia","Trentino-Alto Adige/Südtirol","Veneto",
+  namesRegioni <- c("Piemonte","Valle d'Aosta","Liguria",
+                    "Lombardia","Trentino-Alto","Veneto",
                     "Friuli-Venezia Giulia","Emilia-Romagna","Toscana",
                     "Umbria","Marche","Lazio","Abruzzo","Molise","Campania",
                     "Puglia","Basilicata","Calabria","Sicilia","Sardegna")

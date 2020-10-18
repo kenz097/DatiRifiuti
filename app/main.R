@@ -51,6 +51,6 @@ remove(i, j)
     # Jump chapter 2 and start another chapter by ignoring previous code
   
   #barplot
-  createBarPlot_multiply(df)
+  createBarPlot_multiple(df)
   
   
