@@ -21,27 +21,32 @@ remove(i, j)
                     "Umbria","Marche","Lazio","Abruzzo","Molise","Campania",
                     "Puglia","Basilicata","Calabria","Sicilia","Sardegna")
   datiRaccoltaIndifferenziata = mydf$`Raccolta indifferenziata`
+  datiRaccoltaIndifferenziata
   datiCarta = mydf$`Carta e cartone`
+  datiCarta
   datiPlastica = mydf$Plastica
+  datiPlastica
   datiVetro = mydf$Vetro
+  datiVetro
   datiUmido = mydf$`Rifiuti organici`
+  datiUmido
   datiAltro = mydf$Altro
+  datiAltro
   
   # ATTENTION
     # Before continuing, re-group all graphs in only one environment
-  
-  createBarPlot_limit("Carta e Cartone", datiCarta, 1.05, 1)
-  createBarPlot_limit("Plastica", datiPlastica, 1.05, 1)
-  createBarPlot_limit("Vetro", datiVetro, 1.05, 1)
-  createBarPlot_limit("Organici", datiUmido, 1.05, 1)
-  createBarPlot_limit("Altro", datiAltro, 1.05, 1)
   createBarPlot_limit("Rifiuti Indifferenziata", 
                       datiRaccoltaIndifferenziata, 1.05, 1)
+  createBarPlot_limit("Rifiuti organici", datiUmido, 1.05, 1)
+  createBarPlot_limit("Carta e Cartone", datiCarta, 1.05, 1)
+  createBarPlot_limit("Vetro", datiVetro, 1.05, 1)
+  createBarPlot_limit("Plastica", datiPlastica, 1.05, 1)
+  createBarPlot_limit("Altro", datiAltro, 1.05, 1)
   
   #Display Pie with garbage for region
   
   createPie("Rifiuti Indifferenziata",datiRaccoltaIndifferenziata)
-  createPie("Rifiuti Organici",datiUmido)
+  createPie("Rifiuti organici",datiUmido)
   createPie("Carta e cartone",datiCarta)
   createPie("Vetro",datiVetro)
   createPie("Plastica",datiPlastica)
@@ -52,5 +57,49 @@ remove(i, j)
   
   #barplot
   createBarPlot_multiple(df)
+  
+  #histogram with garbage for region
+  createHisto("Istogramma Rifiuti Indifferenziata",datiRaccoltaIndifferenziata)
+  createHisto("Istogramma Rifiuti organici",datiUmido)
+  createHisto("Istogramma Carta e cartone",datiCarta)
+  createHisto("Istogramma Vetro",datiVetro)
+  createHisto("Istogramma Plastica",datiPlastica)
+  createHisto("Istogramma Altro",datiAltro)
+  
+  #quantile mean and median, we divide all for 1000
+  datiRaccoltaIndifferenziata2<-datiRaccoltaIndifferenziata/1000
+  datiRaccoltaIndifferenziata2<-as.integer(datiRaccoltaIndifferenziata2)
+  datiUmido2<-datiUmido/1000
+  datiUmido2<-as.integer(datiUmido2)
+  datiCarta2<-datiCarta/1000
+  datiCarta2<-as.integer(datiCarta2)
+  datiVetro2<-datiVetro/1000
+  datiVetro2<-as.integer(datiVetro2)
+  datiPlastica2<-datiPlastica/1000
+  datiPlastica2<-as.integer(datiPlastica2)
+  datiAltro2<-datiAltro/1000
+  datiAltro2<-as.integer(datiAltro2)
+  
+  quantile(datiRaccoltaIndifferenziata2)
+  quantile(datiUmido2)
+  quantile(datiCarta2)
+  quantile(datiVetro2)
+  quantile(datiPlastica2)
+  quantile(datiAltro2)
+  
+  summary(datiRaccoltaIndifferenziata2)  
+  summsary(datiUmido2)
+  summary(datiCarta2)
+  summary(datiVetro2)
+  summary(datiPlastica2)
+  summary(datiAltro2)
+  
+  #Display BoxPlot with garbage for region /1000
+  createBoxPlot_base("Rifiuti Indifferenziata",datiRaccoltaIndifferenziata2)
+  createBoxPlot_base("Rifiuti organici",datiUmido2)
+  createBoxPlot_base("Carta e cartone",datiCarta2)
+  createBoxPlot_base("Vetro",datiVetro2)
+  createBoxPlot_base("Plastica",datiPlastica2)
+  createBoxPlot_base("Altro",datiAltro2)
   
   

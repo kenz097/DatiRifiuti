@@ -1,3 +1,20 @@
+# namesGarbage : return names of garbage
+namesGarbage<-function(){
+  namesRifiuti <- c("Raccolta Indifferenziata","Rifiuti organici",
+                    "Carta e cartone","Vetro","Plastica","Altro")
+  return (namesRifiuti)
+}
+
+#namesRegion : rerurn names of Region
+namesRegion<-function(){
+  namesRegioni <- c("Piemonte","Valle d'Aosta","Liguria",
+                    "Lombardia","Trentino-Alto","Veneto",
+                    "Friuli-Venezia Giulia","Emilia-Romagna","Toscana",
+                    "Umbria","Marche","Lazio","Abruzzo","Molise","Campania",
+                    "Puglia","Basilicata","Calabria","Sicilia","Sardegna")
+  return (namesRegioni)
+  
+}
 # createPareto : displays a Pareto diagram with frequencies
 ##  input -> name : gives a name to the Pareto diagram
 ##           arrayToAnalyze : array with indexes to display
@@ -101,6 +118,7 @@ createPie<-function(name, arrayToAnalyze){
 createBarPlot_multiple<-function(arrayToAnalyze){
   #Traslate table
   arrayT<-t(arrayToAnalyze)
+  #give column name's
   colnames(arrayT)<-namesRegion()
   
   #Creating BarPlot
@@ -108,20 +126,15 @@ createBarPlot_multiple<-function(arrayToAnalyze){
           legend=namesGarbage(),col=rainbow(6),las=2)
 }
 
-# namesGarbage : return names of garbage
-namesGarbage<-function(){
-  namesRifiuti <- c("Raccolta Indifferenziata","Rifiuti organici",
-                     "Carta e cartone","Vetro","Plastica","Altro")
-  return (namesRifiuti)
+# createHistoì: display histogram
+# input -> name: gives a name to the Histogram
+#         arrayToAnalyze: array with index to display
+createHisto<-function(name,arrayToAnalyze){
+  
+  #calculating frequencies
+  mySum = sum(arrayToAnalyze)
+  arrayToAnalyze <- arrayToAnalyze / mySum
+  h<-hist(arrayToAnalyze,freq=FALSE,main=name,ylab="Frequenza assoluta dei rifiuti",col=rainbow(length(arrayToAnalyze)))
+  h
 }
 
-#namesRegion : rerurn names of Region
-namesRegion<-function(){
-  namesRegioni <- c("Piemonte","Valle d'Aosta","Liguria",
-                    "Lombardia","Trentino-Alto","Veneto",
-                    "Friuli-Venezia Giulia","Emilia-Romagna","Toscana",
-                    "Umbria","Marche","Lazio","Abruzzo","Molise","Campania",
-                    "Puglia","Basilicata","Calabria","Sicilia","Sardegna")
-  return (namesRegioni)
-  
-}
