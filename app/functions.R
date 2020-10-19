@@ -85,11 +85,33 @@ createBarPlot_ordered <- function (name, arrayToAnalyze, maxLimit, frequency) {
           names = mydf$Regioni[dataOrder], las=2)
 }
 
+# createBarPlot_legend : displays a BarPlot diagram with a max limit on y axis
+#                        and with a legend on the right
+##  input -> name : gives a name to the BarPlot diagram
+##           arrayToAnalyze : array with indexes to display
+##           maxLimit : the y limit on the axis
+##           legendArray : array with strings of the legend
+createBarPlot_legend <- function (name, arrayToAnalyze, maxLimit, legendArray) {
+  mySum = sum(arrayToAnalyze)
+  arrayToAnalyze <- arrayToAnalyze / mySum
+  
+  barplot(t(arrayToAnalyze), col=rainbow(length(arrayToAnalyze)),
+          ylim = c(0, maxLimit), names = mydf$Regioni, las=2, main = name,
+          legend = legendArray)
+}
+
 # createBoxPlot_base : displays a BoxPlot with default settings
 ##  input -> name : gives a name to the BoxPlot diagram
 ##           arrayToAnalyze : array with indexes to display
 createBoxPlot_base <- function(name, arrayToAnalyze) {
   boxplot(arrayToAnalyze, col="green", main = name)
+}
+
+# createBoxPlot_notch : displays a notch BoxPlot with default settings
+##  input -> name : gives a name to the BoxPlot diagram
+##           arrayToAnalyze : array with indexes to display
+createBoxPlot_notch <- function(name, arrayToAnalyze) {
+  boxplot(arrayToAnalyze, notch=TRUE, col="green", main = name)
 }
 
 # createBoxPlot_colored : displays a BoxPlot with custom color
@@ -140,3 +162,8 @@ createHisto<-function(name,arrayToAnalyze){
   str(h)
 }
 
+# cv : calculate coefficiente di variazione
+
+cv <- function (x) {
+  sd ( x) / abs ( mean (x) )
+}
