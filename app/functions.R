@@ -120,6 +120,8 @@ createBarPlot_multiple<-function(arrayToAnalyze){
   arrayT<-t(arrayToAnalyze)
   #give column name's
   colnames(arrayT)<-namesRegion()
+  #divide all for 1000
+  arrayT<-arrayT/1000
   
   #Creating BarPlot
   barplot(arrayT, main="Grafico a barre multiple",
@@ -135,6 +137,6 @@ createHisto<-function(name,arrayToAnalyze){
   mySum = sum(arrayToAnalyze)
   arrayToAnalyze <- arrayToAnalyze / mySum
   h<-hist(arrayToAnalyze,freq=FALSE,main=name,ylab="Frequenza assoluta dei rifiuti",col=rainbow(length(arrayToAnalyze)))
-  h
+  str(h)
 }
 

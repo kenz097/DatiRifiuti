@@ -88,7 +88,7 @@ remove(i, j)
   quantile(datiAltro2)
   
   summary(datiRaccoltaIndifferenziata2)  
-  summsary(datiUmido2)
+  summary(datiUmido2)
   summary(datiCarta2)
   summary(datiVetro2)
   summary(datiPlastica2)
