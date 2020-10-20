@@ -150,7 +150,7 @@ createBarPlot_multiple<-function(arrayToAnalyze){
           legend=namesGarbage(),col=rainbow(6),las=2)
 }
 
-# createHistoì: display histogram
+# createHisto: display histogram
 # input -> name: gives a name to the Histogram
 #         arrayToAnalyze: array with index to display
 createHisto<-function(name,arrayToAnalyze){
@@ -158,7 +158,9 @@ createHisto<-function(name,arrayToAnalyze){
   #calculating frequencies
   mySum = sum(arrayToAnalyze)
   arrayToAnalyze <- arrayToAnalyze / mySum
-  h<-hist(arrayToAnalyze,freq=FALSE,main=name,ylab="Frequenza assoluta dei rifiuti",col=rainbow(length(arrayToAnalyze)))
+  #display histogram
+  h<-hist(arrayToAnalyze,freq=FALSE,main=name,ylab="
+          Frequenza assoluta dei rifiuti",col=rainbow(length(arrayToAnalyze)))
   str(h)
 }
 
@@ -166,4 +168,52 @@ createHisto<-function(name,arrayToAnalyze){
 
 cv <- function (x) {
   sd ( x) / abs ( mean (x) )
+}
+
+# createDiscreteEmpiricalDistribution: display histogram
+# input -> arrayToAnalyze: array with index to display
+createDiscreteEmpiricalDistribution<-function(arrayToAnalyze){
+  r<-round(cumsum(arrayToAnalyze/length(arrayToAnalyze)),3)
+  
+  plot(ecdf(r),main="Funzione di distribuzione empirica discreta",
+       verticals=FALSE,col="red")
+  r
+}
+
+#NON FUNZIONA
+# createContinuousEmpiricalDistribution: display histogram
+# input -> arrayToAnalyze: array with index to display
+createContinuousEmpiricalDistribution<-function(arrayToAnalyze){
+  
+  #created relative frequency of values
+  frequenza<-arrayToAnalyze/length(arrayToAnalyze)
+  
+  #m is the length of arrayToAnalyze
+  m<-length(arrayToAnalyze)
+  
+  #I used quantiles to divide the problem into ranges
+  q1<-quantile(frequenza,0.25)
+  q2<-quantile(frequenza,0.5)
+  q3<-quantile(frequenza,0.75)
+  q4<-quantile(frequenza,1)
+  classi<-c(q1,q2,q3,q4)
+  
+  #create class closed on the right
+  frelclassi <-table(cut(arrayToAnalyze,breaks=classi,right=FALSE))/m
+  
+  #Fcum is the cumulative sum of relative frequencies
+  Fcum<-cumsum(frelclassi)
+  Fcum[4]<-Fcum[4]+frequenza[m]
+  
+  #max and min
+  maxx<-max(frelclassi)
+  minn<-min(frelclassi)
+  ascisse<-c(minn,q1,q2,q3,q4,maxx)
+  ordinate<-c(0,0,Fcum[1:4],1)
+  plot(ascisse,ordinate,type="b",axes=FALSE,main="
+  Funzione di distribuzione empirica continua",
+       col="red",ylim=c(0,1),xlab="x",ylab="F(x)")
+  axis(1,ascisse)
+  axis(2,format(Fcum,digits=2))
+  box()
 }

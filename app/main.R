@@ -102,4 +102,20 @@ remove(i, j)
   createBoxPlot_base("Plastica",datiPlastica2)
   createBoxPlot_base("Altro",datiAltro2)
   
+  #Display diagram of discrete empirical distribution
+  
+  createDiscreteEmpiricalDistribution(datiRaccoltaIndifferenziata2)
+  createDiscreteEmpiricalDistribution(datiUmido2)
+  createDiscreteEmpiricalDistribution(datiCarta2)
+  createDiscreteEmpiricalDistribution(datiVetro2)
+  createDiscreteEmpiricalDistribution(datiPlastica2)
+  createDiscreteEmpiricalDistribution(datiAltro2)
+  
+  
+  #Display diagram of Continuous empirical distribution function
+  createContinuousEmpiricalDistribution(datiRaccoltaIndifferenziata2)
+  
+  
+  
+  
   
