@@ -180,36 +180,39 @@ createDiscreteEmpiricalDistribution<-function(arrayToAnalyze){
   r
 }
 
-#NON FUNZIONA
+
 # createContinuousEmpiricalDistribution: display histogram
 # input -> arrayToAnalyze: array with index to display
 createContinuousEmpiricalDistribution<-function(arrayToAnalyze){
   
   #created relative frequency of values
   frequenza<-arrayToAnalyze/length(arrayToAnalyze)
+  frequenza<-as.integer(frequenza)
   
   #m is the length of arrayToAnalyze
   m<-length(arrayToAnalyze)
   
-  #I used quantiles to divide the problem into ranges
+  #I used quantiles and mean to divide the problem into ranges
   q1<-quantile(frequenza,0.25)
   q2<-quantile(frequenza,0.5)
-  q3<-quantile(frequenza,0.75)
-  q4<-quantile(frequenza,1)
-  classi<-c(q1,q2,q3,q4)
+  q3<-mean(frequenza)
+  q4<-quantile(frequenza,0.75)
+  q5<-quantile(frequenza,1)
+  classi<-c(q1,q2,q3,q4,q5)
   
   #create class closed on the right
-  frelclassi <-table(cut(arrayToAnalyze,breaks=classi,right=FALSE))/m
+  frelclassi <-table(cut(frequenza,breaks=classi,right=FALSE))/m
   
   #Fcum is the cumulative sum of relative frequencies
   Fcum<-cumsum(frelclassi)
   Fcum[4]<-Fcum[4]+frequenza[m]
   
   #max and min
-  maxx<-max(frelclassi)
-  minn<-min(frelclassi)
-  ascisse<-c(minn,q1,q2,q3,q4,maxx)
-  ordinate<-c(0,0,Fcum[1:4],1)
+  minn<-min(frequenza)
+  #created abscissa and ordinate with previous values
+  ascisse<-c(minn,q1,q2,q3,q4,q5)
+  ordinate<-c(0,0,Fcum[1:3],1)
+  #display plot
   plot(ascisse,ordinate,type="b",axes=FALSE,main="
   Funzione di distribuzione empirica continua",
        col="red",ylim=c(0,1),xlab="x",ylab="F(x)")

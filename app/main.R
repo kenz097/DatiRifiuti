@@ -111,9 +111,13 @@ remove(i, j)
   createDiscreteEmpiricalDistribution(datiPlastica2)
   createDiscreteEmpiricalDistribution(datiAltro2)
   
-  
   #Display diagram of Continuous empirical distribution function
   createContinuousEmpiricalDistribution(datiRaccoltaIndifferenziata2)
+  createContinuousEmpiricalDistribution(datiUmido2)
+  createContinuousEmpiricalDistribution(datiCarta2)
+  createContinuousEmpiricalDistribution(datiVetro2)
+  createContinuousEmpiricalDistribution(datiPlastica2)
+  createContinuousEmpiricalDistribution(datiAltro2)
   
   
   
