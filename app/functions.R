@@ -170,7 +170,8 @@ cv <- function (x) {
   sd ( x) / abs ( mean (x) )
 }
 
-# createDiscreteEmpiricalDistribution: display histogram
+# createDiscreteEmpiricalDistribution: display discrete empirical 
+#                                              distribution function
 # input -> arrayToAnalyze: array with index to display
 createDiscreteEmpiricalDistribution<-function(arrayToAnalyze){
   r<-round(cumsum(arrayToAnalyze/length(arrayToAnalyze)),3)
@@ -181,7 +182,8 @@ createDiscreteEmpiricalDistribution<-function(arrayToAnalyze){
 }
 
 
-# createContinuousEmpiricalDistribution: display histogram
+# createContinuousEmpiricalDistribution: display continous empirical 
+#                                                distribution function
 # input -> arrayToAnalyze: array with index to display
 createContinuousEmpiricalDistribution<-function(arrayToAnalyze){
   
@@ -199,6 +201,7 @@ createContinuousEmpiricalDistribution<-function(arrayToAnalyze){
   q4<-quantile(frequenza,0.75)
   q5<-quantile(frequenza,1)
   classi<-c(q1,q2,q3,q4,q5)
+  
   
   #create class closed on the right
   frelclassi <-table(cut(frequenza,breaks=classi,right=FALSE))/m
@@ -219,4 +222,23 @@ createContinuousEmpiricalDistribution<-function(arrayToAnalyze){
   axis(1,ascisse)
   axis(2,format(Fcum,digits=2))
   box()
+}
+
+# createMedianGraph: display discrete empirical distribution function and value 
+#                     above and below the mean
+# input ->  name : gives a name to the Pareto diagram
+#           arrayToAnalyze: array with index to display
+createMedianGraph<-function(name,arrayToAnalyze){
+  
+  #calculate cumulative sum and divide by length and round by 2
+  Fdati1<-cumsum(arrayToAnalyze/length(arrayToAnalyze))
+  round(Fdati1,2)
+  
+  #paste two string
+  title<-paste("Funzione di distribuzione empirica\n discreta",name)
+  
+  #display value by color red and the line of media in blue
+  plot(ecdf(arrayToAnalyze),main=title,verticals=TRUE,col="red")
+  abline(h=0.5,lty=2,col="blue")
+  
 }

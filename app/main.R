@@ -22,15 +22,15 @@ remove(i, j)
                     "Puglia","Basilicata","Calabria","Sicilia","Sardegna")
   datiRaccoltaIndifferenziata = mydf$`Raccolta indifferenziata`
   datiRaccoltaIndifferenziata
-  datiCarta = mydf$`Carta e cartone`
-  datiCarta
-  datiPlastica = mydf$Plastica
-  datiPlastica
-  datiVetro = mydf$Vetro
-  datiVetro
   datiUmido = mydf$`Rifiuti organici`
   datiUmido
-  datiAltro = mydf$Altro
+  datiCarta = mydf$`Carta e cartone`
+  datiCarta
+  datiVetro = mydf$`Vetro`
+  datiVetro
+  datiPlastica = mydf$`Plastica`
+  datiPlastica
+  datiAltro = mydf$`Altro`
   datiAltro
   
   # ATTENTION
@@ -119,7 +119,13 @@ remove(i, j)
   createContinuousEmpiricalDistribution(datiPlastica2)
   createContinuousEmpiricalDistribution(datiAltro2)
   
-  
+  #Display Median graph divided by 1000
+  createMedianGraph("Rifiuti indifferenziata",datiRaccoltaIndifferenziata2)
+  createMedianGraph("Rifiuti organici",datiUmido2)
+  createMedianGraph("Carta e cartone",datiCarta2)
+  createMedianGraph("Vetro",datiVetro2)
+  createMedianGraph("Plastica",datiPlastica2)
+  createMedianGraph("Altro",datiAltro2)
   
   
   
