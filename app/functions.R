@@ -164,10 +164,10 @@ createHisto<-function(name,arrayToAnalyze){
   str(h)
 }
 
-# cv : calculate coefficiente di variazione
-
-cv <- function (x) {
-  sd ( x) / abs ( mean (x) )
+# cv : calculate coefficient of variation
+# input -> arrayToAnalyze: array with index to display
+cv<-function(arrayToAnalyze){
+  sd(arrayToAnalyze)/abs(mean(arrayToAnalyze))
 }
 
 # createDiscreteEmpiricalDistribution: display discrete empirical 
@@ -241,4 +241,20 @@ createMedianGraph<-function(name,arrayToAnalyze){
   plot(ecdf(arrayToAnalyze),main=title,verticals=TRUE,col="red")
   abline(h=0.5,lty=2,col="blue")
   
+}
+
+
+typesQuantiles <- function(arrayToAnalyze) {
+  y <- numeric (0)
+  for (i in 1:9) {
+    y <-rbind (y,c(
+               quantile (arrayToAnalyze,0,type=i),
+               quantile (arrayToAnalyze,0.25,type=i),
+               quantile (arrayToAnalyze,0.5,type = i),
+               quantile (arrayToAnalyze,0.75,type=i),
+               quantile (arrayToAnalyze,1,type = i)
+             ))
+  }
+  rownames (y) <- paste ("type" , 1:9)
+  y
 }
