@@ -101,6 +101,7 @@ remove(i, j)
   createBoxPlot_base("Vetro",datiVetro2)
   createBoxPlot_base("Plastica",datiPlastica2)
   createBoxPlot_base("Altro",datiAltro2)
+  createBoxPlot_notch("Rifiuti organici", datiUmido2)
   
   #Display diagram of discrete empirical distribution
   
