@@ -258,3 +258,21 @@ typesQuantiles <- function(arrayToAnalyze) {
   rownames (y) <- paste ("type" , 1:9)
   y
 }
+
+# skw: display skewness 
+# input ->  arrayToAnalyze: array with index to display
+skw <-function (arrayToAnalyze){
+  n<-length(arrayToAnalyze)
+  m2<-(n-1)*var(arrayToAnalyze)/n
+  m3<-(sum((arrayToAnalyze-mean(arrayToAnalyze))^3))/n
+  m3/(m2^1.5)
+}
+
+# curt: display sample kurtosis
+# input ->  arrayToAnalyze: array with index to display
+curt <-function (arrayToAnalyze){
+  n<-length(arrayToAnalyze)
+  m2<-(n-1)*var(arrayToAnalyze)/n
+  m4<-(sum((arrayToAnalyze-mean(arrayToAnalyze))^4))/n
+  m4/(m2^2)-3
+}

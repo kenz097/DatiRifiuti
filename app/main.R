@@ -142,7 +142,7 @@ remove(i, j)
   typesQuantiles(datiAltro)
   typesQuantiles(datiAltro2)
   
-  #sample variance, sample standard deviation and coefficient of variation
+  #sample variance, sample standard deviation and coefficient of variation /1000
   var(datiRaccoltaIndifferenziata2)
   sd(datiRaccoltaIndifferenziata2)
   cv(datiRaccoltaIndifferenziata2)
@@ -161,6 +161,23 @@ remove(i, j)
   var(datiAltro2)
   sd(datiAltro2)
   cv(datiAltro2)
+  
+  #skewness /1000
+  skw(datiRaccoltaIndifferenziata2)
+  skw(datiUmido2)
+  skw(datiCarta2)
+  skw(datiVetro2)
+  skw(datiPlastica2)
+  skw(datiAltro2)
+  
+  #sample kurtosis /1000
+  curt(datiRaccoltaIndifferenziata2)
+  curt(datiUmido2)
+  curt(datiCarta2)
+  curt(datiVetro2)
+  curt(datiPlastica2)
+  curt(datiAltro2)
+  
   
   
   
