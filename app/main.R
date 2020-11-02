@@ -3,7 +3,7 @@ df <- data.frame(X1 = rep(0), X2 = rep(0), X3 = rep(0),
                  X4 = (0), X5 = rep(0), X6 = rep(0))
 for (i in 1:20){
   for (j in 2:7) {
-    mydf[i, j] <- as.integer(mydf[i, j])
+    mydf[i, j] <- as.integer(mydf[i, j]+0.5)
     df[i, j-1] <- mydf[i, j]
   }
 }
@@ -68,17 +68,17 @@ remove(i, j)
   
   #quantile mean and median, we divide all for 1000
   datiRaccoltaIndifferenziata2<-datiRaccoltaIndifferenziata/1000
-  datiRaccoltaIndifferenziata2<-as.integer(datiRaccoltaIndifferenziata2)
+  datiRaccoltaIndifferenziata2<-as.integer(datiRaccoltaIndifferenziata2+0.5)
   datiUmido2<-datiUmido/1000
-  datiUmido2<-as.integer(datiUmido2)
+  datiUmido2<-as.integer(datiUmido2+0.5)
   datiCarta2<-datiCarta/1000
-  datiCarta2<-as.integer(datiCarta2)
+  datiCarta2<-as.integer(datiCarta2+0.5)
   datiVetro2<-datiVetro/1000
-  datiVetro2<-as.integer(datiVetro2)
+  datiVetro2<-as.integer(datiVetro2+0.5)
   datiPlastica2<-datiPlastica/1000
-  datiPlastica2<-as.integer(datiPlastica2)
+  datiPlastica2<-as.integer(datiPlastica2+0.5)
   datiAltro2<-datiAltro/1000
-  datiAltro2<-as.integer(datiAltro2)
+  datiAltro2<-as.integer(datiAltro2+0.5)
   
   quantile(datiRaccoltaIndifferenziata2)
   quantile(datiUmido2)
@@ -177,6 +177,18 @@ remove(i, j)
   curt(datiVetro2)
   curt(datiPlastica2)
   curt(datiAltro2)
+
+  #Euclidean distance
+  distance<-df/1000
+  distance<-as.integer(distance+0.5)
+  distance
+  distance<-(distance)
+  distance
+
+  rownames(distance)<-namesRegion()
+  colnames(distance)<-namesGarbage()
+  d<-dist(distance,method="euclidean",diag=TRUE,upper=TRUE)
+  d
   
   
   
