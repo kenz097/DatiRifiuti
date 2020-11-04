@@ -12,7 +12,8 @@ remove(i, j)
   ### MAIN ###
   
   # Getting the row arrays
-
+  mydf
+  df
   labelsRifiuti <- c("Raccolta Indifferenziata","Rifiuti organici",
                      "Carta e cartone","Vetro","Plastica","Altro")
   namesRegioni <- c("Piemonte","Valle d'Aosta /Vallée d'Aoste","Liguria",
@@ -178,17 +179,18 @@ remove(i, j)
   curt(datiPlastica2)
   curt(datiAltro2)
 
-  #Euclidean distance
-  distance<-df/1000
-  distance<-as.integer(distance+0.5)
-  distance
-  distance<-(distance)
-  distance
-
+  #Euclidean distance, we use only inside R NOT IN THE WORD
+  distance<-round(df/1000,0)
   rownames(distance)<-namesRegion()
   colnames(distance)<-namesGarbage()
-  d<-dist(distance,method="euclidean",diag=TRUE,upper=TRUE)
-  d
+  dist(distance,method="euclidean",diag=TRUE,upper=TRUE)
+  #scale and standardize data
+  d<-scale(distance)
+  #now we calculate again the data but by scale and standardize data
+  dist(d,method="euclidean",diag=TRUE,upper=TRUE)
+  
+  
+  
   
   
   
