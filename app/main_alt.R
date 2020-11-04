@@ -91,3 +91,38 @@ remove(i, j)
   
   
   
+  # chap 7
+
+  set <- scale(df)
+  row.names(set) <- namesRegioni
+  d <- dist(set);
+  hlsSingle <-hclust (d, method = "single");
+  str(hlsSingle);
+  
+  plot(hlsSingle, hang =-1,
+       xlab="Metodo del legame singolo")
+  
+  hlsComplete <-hclust (d, method = "complete");
+  str(hlsComplete);
+  
+  plot(hlsComplete, hang =-1,
+       xlab="Metodo del legame completo")
+  
+  hlsMedian <-hclust (d, method = "median");
+  str(hlsMedian);
+  
+  plot(hlsMedian, hang =-1,
+       xlab="Metodo del legame medio")
+  
+  hlsCentroid <-hclust (d^2, method = "centroid");
+  str(hlsCentroid);
+  
+  plot(hlsCentroid, hang =-1,
+       xlab="Metodo del centroide")
+  
+  hlsMedian <-hclust (d^2, method = "median");
+  str(hlsMedian);
+  
+  plot(hlsMedian, hang =-1,
+       xlab="Metodo della mediana")
+  
