@@ -125,4 +125,31 @@ remove(i, j)
   
   plot(hlsMedian, hang =-1,
        xlab="Metodo della mediana")
+
+  #qua ho iniziato io Abby <3
+  
+  #partitions by means of rectangles
+  plot(hlsCentroid, hang =-1,
+       xlab="Metodo del centroide")
+  axis(side=4,at=round(c(0,hlsCentroid$height),2))
+  rect.hclust(hlsCentroid,k=2,border="red")
+  rect.hclust(hlsCentroid,k=3,border="green")
+  
+  #from float to int
+  arrotondato<-round(toAnalyze,0)
+  #mean and median and sample standard deviation
+  cutT<-cutree(hlsCentroid,k=2)
+  listCut<-list(cutT)
+  
+  #there is a bug with function aggregate, we need fix it cap 7.3.3 and 7.3.4
+  aggregate(arrotondato,listCut,mean)
+  aggregate(arrotondato,listCut,var)
+  aggregate(arrotondato,listCut,sd)
+  
+  #chapter 7.4 does not need to be done
+  
+  
+  
+  
+  
   
