@@ -147,8 +147,20 @@ remove(i, j)
   aggregate(arrotondato,listCut,sd)
   
   #chapter 7.4 does not need to be done
+  #chapter 7.5 non-hierarchical methods
+  km<-kmeans(arrotondato,center=2,iter.max=10,nstart=1)
+  km
+  str(km)
+
+  #per continuare qua dobbiamo usare di nuovo aggregate che non funziona
   
   
+  #now we try to scale data and use kmeans, non l'ho inserito nel documento 
+  #questa parte, va aggiunta
+  Z<-scale(arrotondato)
+  Z
+  km1<-kmeans(Z,center=2,iter.max = 10,nstart=1)
+  km1
   
   
   
