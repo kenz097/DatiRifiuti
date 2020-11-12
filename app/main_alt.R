@@ -125,8 +125,6 @@ remove(i, j)
   
   plot(hlsMedian, hang =-1,
        xlab="Metodo della mediana")
-
-  #qua ho iniziato io Abby <3
   
   #partitions by means of rectangles
   plot(hlsCentroid, hang =-1,
@@ -137,29 +135,29 @@ remove(i, j)
   
   #from float to int
   arrotondato<-round(toAnalyze,0)
+  arrotondato
+  
+  #see how regions are classified as the number of clusters increases
+  cutree(hlsCentroid,k=1:20)
+  
   #mean and median and sample standard deviation
-  cutT<-cutree(hlsCentroid,k=2)
+  cutT<-cutree(hlsCentroid,k=3,h=NULL)
   listCut<-list(cutT)
   
-  #there is a bug with function aggregate, we need fix it cap 7.3.3 and 7.3.4
+  #use method aggregate
   aggregate(arrotondato,listCut,mean)
   aggregate(arrotondato,listCut,var)
   aggregate(arrotondato,listCut,sd)
   
-  #chapter 7.4 does not need to be done
-  #chapter 7.5 non-hierarchical methods
-  km<-kmeans(arrotondato,center=2,iter.max=10,nstart=1)
+  #Non-hierarchical methods
+  km<-kmeans(arrotondato,center=3,iter.max=10,nstart=1)
   km
   str(km)
-
-  #per continuare qua dobbiamo usare di nuovo aggregate che non funziona
   
-  
-  #now we try to scale data and use kmeans, non l'ho inserito nel documento 
-  #questa parte, va aggiunta
+  #now we try to scale data and use kmeans
   Z<-scale(arrotondato)
   Z
-  km1<-kmeans(Z,center=2,iter.max = 10,nstart=1)
+  km1<-kmeans(Z,center=4,iter.max = 10,nstart=1)
   km1
   
   

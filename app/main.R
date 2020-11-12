@@ -189,7 +189,74 @@ remove(i, j)
   #now we calculate again the data but by scale and standardize data
   dist(d,method="euclidean",diag=TRUE,upper=TRUE)
   
+  # chap 7, continuation of the cluster analysis
   
+  set <- scale(df)
+  row.names(set) <- namesRegioni
+  d <- dist(set);
+  hlsSingle <-hclust (d, method = "single");
+  str(hlsSingle);
+  
+  plot(hlsSingle, hang =-1,
+       xlab="Metodo del legame singolo")
+  
+  hlsComplete <-hclust (d, method = "complete");
+  str(hlsComplete);
+  
+  plot(hlsComplete, hang =-1,
+       xlab="Metodo del legame completo")
+  
+  hlsMedian <-hclust (d, method = "median");
+  str(hlsMedian);
+  
+  plot(hlsMedian, hang =-1,
+       xlab="Metodo del legame medio")
+  
+  hlsCentroid <-hclust (d^2, method = "centroid");
+  str(hlsCentroid);
+  
+  plot(hlsCentroid, hang =-1,
+       xlab="Metodo del centroide")
+  
+  hlsMedian <-hclust (d^2, method = "median");
+  str(hlsMedian);
+  
+  plot(hlsMedian, hang =-1,
+       xlab="Metodo della mediana")
+  
+  #partitions by means of rectangles
+  plot(hlsCentroid, hang =-1,
+       xlab="Metodo del centroide")
+  axis(side=4,at=round(c(0,hlsCentroid$height),2))
+  rect.hclust(hlsCentroid,k=2,border="red")
+  rect.hclust(hlsCentroid,k=3,border="green")
+  
+  #from float to int
+  arrotondato<-round(toAnalyze,0)
+  arrotondato
+  
+  #see how regions are classified as the number of clusters increases
+  cutree(hlsCentroid,k=1:20)
+  
+  #mean and median and sample standard deviation
+  cutT<-cutree(hlsCentroid,k=3,h=NULL)
+  listCut<-list(cutT)
+  
+  #use method aggregate
+  aggregate(arrotondato,listCut,mean)
+  aggregate(arrotondato,listCut,var)
+  aggregate(arrotondato,listCut,sd)
+  
+  #Non-hierarchical methods
+  km<-kmeans(arrotondato,center=3,iter.max=10,nstart=1)
+  km
+  str(km)
+  
+  #now we try to scale data and use kmeans
+  Z<-scale(arrotondato)
+  Z
+  km1<-kmeans(Z,center=4,iter.max = 10,nstart=1)
+  km1
   
   
   
