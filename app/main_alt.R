@@ -157,7 +157,7 @@ remove(i, j)
   #now we try to scale data and use kmeans
   Z<-scale(arrotondato)
   Z
-  km1<-kmeans(Z,center=4,iter.max = 10,nstart=1)
+  km1<-kmeans(Z,center=3,iter.max = 10,nstart=10)
   km1
   
   
