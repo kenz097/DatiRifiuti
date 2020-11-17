@@ -190,7 +190,9 @@ remove(i, j)
   dist(d,method="euclidean",diag=TRUE,upper=TRUE)
   
   # chap 7, continuation of the cluster analysis
-  
+  toAnalyze = data.frame(mydf$`Rifiuti organici`, mydf$`Carta e cartone`,
+                         mydf$Vetro, mydf$Plastica, mydf$Altro)
+  toAnalyze = toAnalyze / 1000
   set <- scale(df)
   row.names(set) <- namesRegioni
   d <- dist(set);
@@ -255,7 +257,7 @@ remove(i, j)
   #now we try to scale data and use kmeans
   Z<-scale(arrotondato)
   Z
-  km1<-kmeans(Z,center=4,iter.max = 10,nstart=1)
+  km1<-kmeans(Z,center=3,iter.max = 10,nstart=10)
   km1
   
   
