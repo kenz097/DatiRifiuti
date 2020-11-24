@@ -208,10 +208,10 @@ remove(i, j)
   plot(hlsComplete, hang =-1,
        xlab="Metodo del legame completo")
   
-  hlsMedian <-hclust (d, method = "median");
-  str(hlsMedian);
+  hlsAvarage<-hclust (d, method = "average");
+  str(hlsAvarage);
   
-  plot(hlsMedian, hang =-1,
+  plot(hlsAvarage, hang =-1,
        xlab="Metodo del legame medio")
   
   hlsCentroid <-hclust (d^2, method = "centroid");
@@ -241,8 +241,22 @@ remove(i, j)
   cutree(hlsCentroid,k=1:20)
   
   #mean and median and sample standard deviation
+  #Centroid
   cutT<-cutree(hlsCentroid,k=3,h=NULL)
   listCut<-list(cutT)
+  #single
+  cutT1<-cutree(hlsSingle,k=3,h=NULL)
+  listCut1<-list(cutT1)
+  #completed
+  cutT2<-cutree(hlsComplete,k=3,h=NULL)
+  listCut2<-list(cutT2)
+  #median
+  cutT3<-cutree(hlsMedian,k=3,h=NULL)
+  listCut3<-list(cutT3)
+  #average
+  cutT4<-cutree(hlsAvarage,k=3,h=NULL)
+  listCut4<-list(cutT4)
+  #dendrogram
   
   #use method aggregate
   aggregate(arrotondato,listCut,mean)
@@ -259,6 +273,87 @@ remove(i, j)
   Z
   km1<-kmeans(Z,center=3,iter.max = 10,nstart=10)
   km1
+  str(km1)
+  
+  #relative internal sum non non-homogeneity between cluster 
+  km1$tot.withinss/km1$totss
+  #relative non-homogeneity between cluster 
+  km1$betweenss/km1$totss
+  
+  #for do this we can't write all code but we only write d and after come here
+  covMatrix<-cov(d)
+  covMatrix  
+  
+  #non-homogeneity matrix
+  NHM<-19*covMatrix
+  NHM
+  
+  #non-homogeneity matrix of data set standardize
+  NHMS<-(20-1)*sum(apply(d,2,var))
+  NHMS
+  #all type of division on cluster
+  #centroid
+  agvr<-aggregate(d,listCut,var)[,-1]
+  agvr  
+  #single
+  agvr1<-aggregate(d,listCut1,var)[,-1]
+  agvr1
+  #completed
+  agvr2<-aggregate(d,listCut2,var)[,-1]
+  agvr2
+  #median
+  agvr3<-aggregate(d,listCut3,var)[,-1]
+  agvr3
+  #average
+  agvr4<-aggregate(d,listCut4,var)[,-1]
+  agvr4
+  
+  
+  num<-table(cutT)
+  num
+  num1<-table(cutT2)
+  num1
+
+  #calculate again non-homogeneity matrix first
+  trh1<-(num[[1]]-1)*sum(agvr[1,])
+  trh1
+  trh2<-(num[[2]]-1)*sum(agvr[2,])
+  trh2
+  trh3<-(num[[3]]-1)*sum(agvr[3,])
+  trh3 #this is NA because is only Lombardia and value=
+  #second matrix
+  trh11<-(num1[[1]]-1)*sum(agvr[1,])
+  trh11
+  trh22<-(num1[[2]]-1)*sum(agvr[2,])
+  trh22
+  trh33<-(num1[[3]]-1)*sum(agvr[3,])
+  trh33 #this is NA because is only Lombardia and value=0
+  
+  #internal sum non-homogeneity between cluster first(within)
+  trHS<-trh1+trh2
+  trHS
+  #non-homogeneity between cluster first(between)
+  trHB<-NHMS-trHS
+  trHB
+  #internal sum non-homogeneity between cluster second(within)
+  trHS1<-trh11+trh22
+  trHS1
+  #non-homogeneity between cluster second(between)
+  trHB1<-NHMS-trHS1
+  trHB1
+  
+  
+  #Relative measures first
+  #within divided total non-homogeneity
+  trHS/NHMS
+  #between divided total non-homogeneity
+  trHB/NHMS
+  #second
+  #within divided total non-homogeneity
+  trHS1/NHMS
+  #between divided total non-homogeneity
+  trHB1/NHMS
+  
   
   
   
