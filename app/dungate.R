@@ -42,8 +42,64 @@ subdata <- data[0:50]
 stima50 = mean(subdata)/50
 stima50
 
+#confidence interval estimate with known variance
+#population
+data
+#media
+media<-mean(data)
+media
+#alpha is a value between 0 and 1
+alpha<-1-0.95
+#calculate confidence interval
+q<-qnorm(1-alpha/2,mean=0,sd=1)
+#length data
+n<-length(data)
+#confidence interval estimate with known variance
+media-q*8/sqrt(n)
+media+q*8/sqrt(n)
 
+#confidence interval estimate with not known variance
+data
+media
+#sample standard deviation
+devs<-sd(data)
+devs
+#alpha
+alpha<-1-0.99
+n
+#quantity
+quant<-qt(1-alpha/2,df=n-1)
+quant
+#confidence interval estimate with not known variance
+media-quant*devs/sqrt(n)
+media+quant*devs/sqrt(n)
 
+#confidence interval estimate with known mean
+data
+media
+#mu
+mu<-70
+#variance
+varia<-var(data)
+varia
+#alpha
+alpha<-1-0.95
+#confidence interval estimate with known mean
+qchi<-qchisq(alpha/2,df=n)
+qchi
+qchi2<-qchisq(1-alpha/2,df=n)
+qchi2
+((n-1)*varia+n*(media-mu)**2)/qchi2
+((n-1)*varia+n*(media-mu)**2)/qchi
 
-
-
+#confidence interval estimate with not known mean
+data
+media
+varia
+alpha<-1-0.95
+qchis1<-qchisq(alpha/2,df=n-1)
+qchis1
+qchis2<-qchisq(1-alpha/2,df=n-1)
+qchis2
+(n-1)*varia/qchis2
+(n-1)*varia/qchis1
