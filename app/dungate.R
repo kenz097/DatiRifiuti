@@ -22,25 +22,44 @@ data
 frequences = (table(data)/length(data))
 sort(frequences, decreasing = FALSE)
 
-#stima 10
+# stima puntuale con 10 items
 subdata <- data[0:10]
 stima10 = mean(subdata)/10
 stima10
 
-#stima 20
+# stima puntuale con 20 items
 subdata <- data[0:20]
 stima20 = mean(subdata)/20
 stima20
 
-#stima 30
+# stima puntuale con 30 items
 subdata <- data[0:30]
 stima30 = mean(subdata)/30
 stima30
 
-#stima 50
+# stima puntuale con 50 items
 subdata <- data[0:50]
 stima50 = mean(subdata)/50
 stima50
+
+# stima intervallare
+
+numberOfElements = 50
+kparam = 600
+alpha <- 1 - 0.95
+zalpha <- qnorm(1-alpha/2, mean = 0, sd = 1)
+medCamp <- sum(data)/numberOfElements
+
+a2 <- kparam * (numberOfElements * kparam + zalpha^2)
+a1 <- -kparam * (2 * numberOfElements * medCamp + zalpha^2) 
+a0 <- numberOfElements * medCamp^2
+polyroot(c(a0, a1, a2))
+
+###
+
+    # KENZUCCIO
+
+###
 
 #confidence interval estimate with known variance
 #population
