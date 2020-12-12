@@ -122,3 +122,19 @@ qchis2<-qchisq(1-alpha/2,df=n-1)
 qchis2
 (n-1)*varia/qchis2
 (n-1)*varia/qchis1
+
+
+
+
+## test unilateral and bilateral
+p0=0.12
+alpha<-0.05
+qnorm(1-alpha/2,mean=0,sd=1)
+n
+(medCamp-kparam*p0)/sqrt((kparam*p0*(1-p0))/n)
+
+
+
+
+
+
