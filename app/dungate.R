@@ -22,25 +22,20 @@ data
 frequences = (table(data)/length(data))
 sort(frequences, decreasing = FALSE)
 
-# stima puntuale con 10 items
-subdata <- data[0:10]
-stima10 = mean(subdata)/10
-stima10
-
-# stima puntuale con 20 items
-subdata <- data[0:20]
-stima20 = mean(subdata)/20
-stima20
-
-# stima puntuale con 30 items
-subdata <- data[0:30]
-stima30 = mean(subdata)/30
-stima30
-
-# stima puntuale con 50 items
-subdata <- data[0:50]
-stima50 = mean(subdata)/50
-stima50
+  # stima puntuale con 10 items
+  subdata <- data[0:10]
+  stima10 = mean(subdata)/600
+  stima10
+  
+  # stima puntuale con 30 items
+  subdata <- data[0:30]
+  stima30 = mean(subdata)/600
+  stima30
+  
+  # stima puntuale con 50 items
+  subdata <- data[0:50]
+  stima50 = mean(subdata)/600
+  stima50
 
 # stima intervallare
 
