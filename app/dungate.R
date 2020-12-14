@@ -50,86 +50,90 @@ a1 <- -kparam * (2 * numberOfElements * medCamp + zalpha^2)
 a0 <- numberOfElements * medCamp^2
 polyroot(c(a0, a1, a2))
 
-###
 
-    # KENZUCCIO
-
-###
-
-#confidence interval estimate with known variance
-#population
-data
-#media
-media<-mean(data)
-media
-#alpha is a value between 0 and 1
-alpha<-1-0.95
-#calculate confidence interval
-q<-qnorm(1-alpha/2,mean=0,sd=1)
-#length data
-n<-length(data)
-#confidence interval estimate with known variance
-media-q*8/sqrt(n)
-media+q*8/sqrt(n)
-
-#confidence interval estimate with not known variance
-data
-media
-#sample standard deviation
-devs<-sd(data)
-devs
-#alpha
-alpha<-1-0.99
-n
-#quantity
-quant<-qt(1-alpha/2,df=n-1)
-quant
-#confidence interval estimate with not known variance
-media-quant*devs/sqrt(n)
-media+quant*devs/sqrt(n)
-
-#confidence interval estimate with known mean
-data
-media
-#mu
-mu<-70
-#variance
-varia<-var(data)
-varia
-#alpha
-alpha<-1-0.95
-#confidence interval estimate with known mean
-qchi<-qchisq(alpha/2,df=n)
-qchi
-qchi2<-qchisq(1-alpha/2,df=n)
-qchi2
-((n-1)*varia+n*(media-mu)**2)/qchi2
-((n-1)*varia+n*(media-mu)**2)/qchi
-
-#confidence interval estimate with not known mean
-data
-media
-varia
-alpha<-1-0.95
-qchis1<-qchisq(alpha/2,df=n-1)
-qchis1
-qchis2<-qchisq(1-alpha/2,df=n-1)
-qchis2
-(n-1)*varia/qchis2
-(n-1)*varia/qchis1
-
-
-
-
-## test unilateral and bilateral
-p0=0.12
+## unilateral and bilateral test
+# left unilateral test
+p0=0.14
 alpha<-0.05
-qnorm(1-alpha/2,mean=0,sd=1)
+qnorm(1-alpha,mean=0,sd=1)
 n
 (medCamp-kparam*p0)/sqrt((kparam*p0*(1-p0))/n)
 
+#right unilateral test
+p0=0.12
+alpha<-0.05
+qnorm(alpha,mean=0,sd=1)
+n
+(medCamp-kparam*p0)/sqrt((kparam*p0*(1-p0))/n)
+
+value<-c(68,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,93,94,96,105)
+#chi square
+data
+n
+freq<-table(data)
+freq
+length(freq)
+p<-numeric(4)
+for(i in 1:4)
+  p[i]<-qbinom(0.2*i,size=600,prob=stima50)
+p
+freq
+
+temp_value<-pbinom(76,size=600,prob=stima50)
+temp_value
+
+temp_value1<-dbinom(77, size = 600, prob=stima50);
+temp_value1<-temp_value1+dbinom(78, size = 600, prob=stima50);
+temp_value1<-temp_value1+dbinom(79, size = 600, prob=stima50);
+temp_value1<-temp_value1+dbinom(80, size = 600, prob=stima50);
+temp_value1<-temp_value1+dbinom(81, size = 600, prob=stima50);
+temp_value1
+
+temp_value2<-dbinom(82, size = 600, prob=stima50);
+temp_value2<-temp_value2+dbinom(83, size = 600, prob=stima50);
+temp_value2<-temp_value2+dbinom(84, size = 600, prob=stima50);
+temp_value2<-temp_value2+dbinom(85, size = 600, prob=stima50);
+temp_value2
+
+temp_value3<-dbinom(86, size = 600, prob=stima50);
+temp_value3<-temp_value3+dbinom(87, size = 600, prob=stima50);
+temp_value3<-temp_value3+dbinom(88, size = 600, prob=stima50);
+temp_value3<-temp_value3+dbinom(89, size = 600, prob=stima50);
+temp_value3<-temp_value3+dbinom(90, size = 600, prob=stima50);
+temp_value3
+
+temp_value4<-pbinom(90,size=600,prob=stima50,lower.tail = FALSE)
+temp_value4
 
 
+temp_value+temp_value1+temp_value2+temp_value3+temp_value4
+totale<-numeric(5)
+totale[1]<-temp_value
+totale[2]<-temp_value1
+totale[3]<-temp_value2
+totale[4]<-temp_value3
+totale[5]<-temp_value4
 
+min(primopb,temp_value,temp_value2,temp_value3,temp_value4)
 
+50*temp_value4
+
+r<-5
+nint<-numeric(r)
+nint[1]<-length(which(data<p[1]))
+nint[2]<-length(which((data>=p[1])&(data<p[2])))
+nint[3]<-length(which((data>=p[2])&(data<p[3])))
+nint[4]<-length(which((data>=p[3])&(data<p[4])))
+nint[5]<-length(which(data>=p[4]))
+nint
+sum(nint)
+
+chi2<-sum(((nint-n*totale)/sqrt(n*totale))^2)
+chi2
+
+r<-5
+k<-1
+alpha<-0.05
+qchisq(alpha/2,df=r-k-1)
+qchisq(1-alpha/2,df=r-k-1)
 
